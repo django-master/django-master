@@ -1,0 +1,12 @@
+[run]
+omit =
+     */migrations/*
+     */tests*
+    mock_master/*
+    manage.py
+    setup.py
+    test_settings.py
+
+[paths]
+source =
+    djangomaster/

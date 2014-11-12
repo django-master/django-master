@@ -1,0 +1,45 @@
+{% extends 'djangomaster/base.html' %}
+
+{% block extra_css %}
+<style>
+    .dictpage {
+        font-size: 80%
+    }
+
+    .dictpage-key,
+    .dictpage-key:visited {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: inherit;
+        display: block;
+        outline: 0 !important;
+    }
+
+    .dictpage-key:target {
+        color: #3b8bba;
+    }
+
+    .dictpage-key.has-changed {
+        color: #ba3b4c;
+    }
+
+    .dictpage-legend {
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="pure-g dictpage">
+
+        {% for key, value in dict.items %}
+            <div class="pure-u-2-5">
+                <a id="{{key}}" href="#{{key}}" title="{{key}}{% if value.changed %} - has changed{% endif %}" class="dictpage-key {% if value.changed %}has-changed{% endif %}">{{ key }}</a>
+            </div>
+            <div class="pure-u-3-5">{{ value.value }}</div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

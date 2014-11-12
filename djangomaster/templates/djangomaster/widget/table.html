@@ -1,0 +1,17 @@
+{% extends 'djangomaster/widget/base.html' %}
+
+{% block content %}
+
+    <table class="table pure-table" style="width: 100%">
+        <tbody>
+            {% for row in table.rows %}
+                <tr class="{% cycle 'pure-table-odd' 'pure-table-even' %}">
+                    {% for col in row %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

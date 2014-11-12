@@ -1,0 +1,50 @@
+{% extends 'djangomaster/_single_col.html' %}
+
+
+{% block page_title %}Settings{% endblock %}
+
+{% block extra_css %}
+<style>
+    .settings-list {
+        font-size: 80%
+    }
+
+    .settings-key,
+    .settings-key:visited {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: inherit;
+        display: block;
+        outline: 0 !important;
+    }
+
+    .settings-key:target {
+        color: #3b8bba;
+    }
+
+    .settings-key.has-changed {
+        color: #ba3b4c;
+    }
+
+    .settings-legend {
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <p>&nbsp;</p>
+
+    <div class="pure-g settings-list">
+
+        {% for key, value in settings_list %}
+            <div class="pure-u-2-5">
+                <a id="{{key}}" href="#{{key}}" title="{{key}}{% if value.changed %} - has changed{% endif %}" class="settings-key {% if value.changed %}has-changed{% endif %}">{{ key }}</a>
+            </div>
+            <div class="pure-u-3-5">{{ value.value }}</div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

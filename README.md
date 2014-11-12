@@ -3,9 +3,9 @@ django-master
 
 Master dashboard for django
 
-[![Build Status](https://travis-ci.org/andrefarzat/django-master.svg?branch=master)](https://travis-ci.org/andrefarzat/django-master)
-[![Coverage Status](https://coveralls.io/repos/andrefarzat/django-master/badge.png?branch=master)](https://coveralls.io/r/andrefarzat/django-master?branch=master)
-[![Requirements Status](https://requires.io/github/andrefarzat/django-master/requirements.png?branch=master)](https://requires.io/github/andrefarzat/django-master/requirements/?branch=master)
+[![Build Status](https://travis-ci.org/django-master/django-master.svg?branch=master)](https://travis-ci.org/django-master/django-master)
+[![Coverage Status](https://coveralls.io/repos/django-master/django-master/badge.png?branch=master)](https://coveralls.io/r/django-master/django-master?branch=master)
+[![Requirements Status](https://requires.io/github/django-master/django-master/requirements.png?branch=master)](https://requires.io/github/django-master/django-master/requirements/?branch=master)
 
 ROADMAP 0.1.0
 -------------

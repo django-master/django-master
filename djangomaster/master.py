@@ -93,7 +93,7 @@ class SettingsView(MasterView):
     name = 'settings'
     label = 'Settings'
     title = 'Settings'
-    template_name = 'djangomaster/dict.html'
+    template_name = 'djangomaster/pages/dict.html'
 
     def get_context_data(self):
         context = super(SettingsView, self).get_context_data()

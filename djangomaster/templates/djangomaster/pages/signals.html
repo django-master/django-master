@@ -1,18 +1,16 @@
-{% extends 'djangomaster/_single_col.html' %}
+{% extends 'djangomaster/base.html' %}
 {% load i18n %}
 {% block page_title %}{% trans 'Signals' %}{% endblock %}
 
 {% block content %}
 
-    <p>&nbsp;</p>
-
     <div class="pure-g signal-list">
-        {% for signal in signal_list %}
+        {% for signal in signals %}
             {% if signal.has_receivers %}
                 <div class="pure-u-5-5">
-                    {{ signal.name }}<br />
+                    <span class="text-success">{{ signal.name }}</span><br />
                     {% for receiver in signal.receivers %}
-                        <div class="pure-u-5-5" style="margin-left: 20px; font-size: 80%">
+                        <div class="pure-u-5-5" style="margin-left: 20px;">
                             {% trans 'function name:' %} {{receiver.name}}<br />
                             {% trans 'file:' %} {{receiver.file_name}}<br />
                             <br />
@@ -25,18 +23,11 @@
 
     <h4>{% trans 'Signals with no receivers' %}</h4>
     <div class="pure-u-5-5">
-        {% for signal in signal_list %}
+        {% for signal in signals %}
             {% if not signal.has_receivers %}
                 {{ signal.name }}<br />
             {% endif %}
         {% endfor %}
     </div>
 
-{% endblock %}
-
-{% block footer %}
-    <small>
-        {% blocktrans with conf_name='DJANGOMASTER_SIGNAL_MODULES' %}You can add modules to be watched adding them to `{{conf_name}}` settings. ex: {% endblocktrans %}<br />
-        <code>{% blocktrans with conf_name='DJANGOMASTER_SIGNAL_MODULES' %}{{conf_name}} = ('amazingapp.signals', 'anotherapp.models', ){% endblocktrans %}</code>
-    </small>
 {% endblock %}

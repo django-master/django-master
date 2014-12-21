@@ -39,12 +39,15 @@ def get_module(module_name):
     return module
 
 
-class SignalsListView(MasterView):
-    template_name = 'djangomaster/signals.html'
-    context_object_name = 'signal_list'
-    menu_item = 'signals'
+class SignalsView(MasterView):
+    name = 'signals'
+    label = 'Signals'
+    title = 'Signals'
+    template_name = 'djangomaster/pages/signals.html'
 
-    def get_queryset(self):
+    def get_context_data(self):
+        context = super(SignalsView, self).get_context_data()
+
         ret = []
         for module_name in SIGNAL_MODULES:
             module = get_module(module_name)
@@ -52,7 +55,16 @@ class SignalsListView(MasterView):
                 if is_signal(item):
                     ret.append(SignalInstance(item, name=name,
                                               module=module_name))
-        return ret
+
+        context['signals'] = ret
+        return context
+
+    def get_footer(self):
+        return ("You can add modules to be watched adding them "
+                "to `{conf_name}` settings. ex: <br />"
+                "<code>{conf_name} = ('amazingapp.signals', "
+                "'anotherapp.models', )</code>"
+                "").format(conf_name='DJANGOMASTER_SIGNAL_MODULES')
 
 
 class SignalInstance:

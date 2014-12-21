@@ -78,7 +78,7 @@ class RoutesView(MasterView):
     name = 'routes'
     label = 'Routes'
     title = 'Routes'
-    template_name = 'djangomaster/routes.html'
+    template_name = 'djangomaster/pages/routes.html'
 
     def get_context_data(self):
         context = super(RoutesView, self).get_context_data()

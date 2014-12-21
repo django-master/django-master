@@ -8,7 +8,7 @@ setup(
     author=u'Andre Farzat',
     author_email='andrefarzat@gmail.com',
     packages=find_packages(),
-    url='http://pypi.python.org/pypi/django-master/',
+    url='http://github.com/django-master/django-master',
     license='LICENSE',
     description='django master dashboard',
     long_description=open('README.md').read(),

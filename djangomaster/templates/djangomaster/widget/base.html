@@ -1,7 +1,4 @@
-{% block title_wrapper %}
-<h2 id="{{ title|slugify }}" class="content-subhead">{% block title %}{{ title }}{% endblock %}</h2>
-{% endblock %}
-
-{% block content_wrapper %}
-    <div>{% block content %}Replace content block{% endblock %}</div>
-{% endblock %}
+<div id="{{ title|slugify }}" class="panel panel-default">
+    <div class="panel-heading">{% block title %}{{ title }}{% endblock %}</div>
+    <div class="panel-body">{% block content %}Replace content block{% endblock %}</div></div>
+</div>

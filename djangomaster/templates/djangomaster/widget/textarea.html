@@ -1,7 +1,5 @@
 {% extends 'djangomaster/widget/base.html' %}
 
 {% block content %}
-    <div class="pure-form">
-        <textarea rows="10" readonly='readonly' style="width: 100%; resize: none">{{ content }}</textarea>
-    </div>
+    <textarea class="form-control" rows="10" readonly='readonly' style="width: 100%; resize: none">{{ content }}</textarea>
 {% endblock %}

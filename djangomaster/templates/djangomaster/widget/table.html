@@ -2,10 +2,11 @@
 
 {% block content %}
 
-    <table class="table pure-table" style="width: 100%">
+
+    <table class="table table-striped">
         <tbody>
             {% for row in table.rows %}
-                <tr class="{% cycle 'pure-table-odd' 'pure-table-even' %}">
+                <tr>
                     {% for col in row %}
                         <td>{{ col }}</td>
                     {% endfor %}

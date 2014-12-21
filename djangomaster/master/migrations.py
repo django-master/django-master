@@ -6,7 +6,7 @@ class MigrationsView(MasterView):
     name = 'migrations'
     label = 'Migrations'
     title = 'Migrations'
-    template_name = 'djangomaster/pages/migrations.html'
+    template_name = 'djangomaster/sbadmin/pages/migrations.html'
 
     def get_context_data(self, **kwargs):
         context = super(MigrationsView, self).get_context_data(**kwargs)

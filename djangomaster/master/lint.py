@@ -35,7 +35,7 @@ class BaseLintView(MasterView):
     name = 'baselint'
     title = 'Base Lint'
     label = 'Base Lint'
-    template_name = 'djangomaster/pages/lint.html'
+    template_name = 'djangomaster/sbadmin/pages/lint.html'
 
     lint_cmd = None
     lint_is_installed = False

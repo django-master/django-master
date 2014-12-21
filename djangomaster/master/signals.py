@@ -43,7 +43,7 @@ class SignalsView(MasterView):
     name = 'signals'
     label = 'Signals'
     title = 'Signals'
-    template_name = 'djangomaster/pages/signals.html'
+    template_name = 'djangomaster/sbadmin/pages/signals.html'
 
     def get_context_data(self):
         context = super(SignalsView, self).get_context_data()

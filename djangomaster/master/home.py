@@ -17,7 +17,7 @@ from djangomaster.widgets import MasterWidget
 
 
 class RequirementsWidget(MasterWidget):
-    template_name = 'djangomaster/widget/textarea.html'
+    template_name = 'djangomaster/sbadmin/widget/textarea.html'
     title = 'requirements.txt'
 
     def get_context_data(self):
@@ -54,7 +54,7 @@ class RequirementsWidget(MasterWidget):
 
 
 class UserCountWidget(MasterWidget):
-    template_name = 'djangomaster/widget/table.html'
+    template_name = 'djangomaster/sbadmin/widget/table.html'
     title = 'Users\' info'
 
     def get_context_data(self):
@@ -85,7 +85,7 @@ class HomeView(MasterView):
     name = 'home'
     label = 'Home'
     title = 'Django Master'
-    template_name = 'djangomaster/home.html'
+    template_name = 'djangomaster/sbadmin/home.html'
     widgets = (RequirementsWidget, UserCountWidget, )
 
 
@@ -93,7 +93,7 @@ class SettingsView(MasterView):
     name = 'settings'
     label = 'Settings'
     title = 'Settings'
-    template_name = 'djangomaster/pages/dict.html'
+    template_name = 'djangomaster/sbadmin/pages/dict.html'
 
     def get_context_data(self):
         context = super(SettingsView, self).get_context_data()

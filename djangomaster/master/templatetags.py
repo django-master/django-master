@@ -13,7 +13,7 @@ class TemplateTagsView(MasterView):
     name = 'templatetags'
     label = 'Template Tags'
     title = 'Template Tags'
-    template_name = 'djangomaster/pages/templatetags.html'
+    template_name = 'djangomaster/sbadmin/pages/templatetags.html'
 
     def get_context_data(self):
         context = super(TemplateTagsView, self).get_context_data()

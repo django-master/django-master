@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic.detail import View
 
 from djangomaster.sites import mastersite
+from djangomaster.conf import settings as mastersettings
 
 
 class MasterView(View):
@@ -45,6 +46,7 @@ class MasterView(View):
             'mastermenu_item': item_name,
             'footer': self.get_footer(),
             'params': kwargs,
+            'settings': mastersettings,
         }
 
         return context

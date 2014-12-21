@@ -1,6 +1,5 @@
 from subprocess import Popen, PIPE
 import os
-import re
 
 from django.conf import settings
 from django.utils.importlib import import_module
@@ -9,7 +8,7 @@ from djangomaster.conf import settings as master_settings
 from djangomaster.views import MasterView
 
 
-class Result:
+class Result(object):
 
     def __init__(self, file_path, cmd=master_settings.PYLINT_CMD):
         self._path = file_path
@@ -33,10 +32,13 @@ class Result:
 
 
 class BaseLintView(MasterView):
+    name = 'baselint'
+    title = 'Base Lint'
+    label = 'Base Lint'
     template_name = 'djangomaster/pages/lint.html'
+
     lint_cmd = None
     lint_is_installed = False
-    title = 'Lint'
     conf_name = ''
     exclude_patterns = []
 
@@ -94,6 +96,7 @@ class BaseLintView(MasterView):
         context['LINT_CMD'] = self.lint_cmd
         context['ignored_patterns'] = self.exclude_patterns
         context['conf_name'] = self.conf_name
+        context['results'] = self.get_queryset()
         return context
 
 

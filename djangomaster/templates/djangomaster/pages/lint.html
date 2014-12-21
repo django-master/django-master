@@ -6,7 +6,6 @@
 
 
 {% block content %}
-
     {% if not LINT_IS_INSTALLED %}
         <p>{% blocktrans with lint_cmd=LINT_CMD %}{{ lint_cmd }} isn't installed.{% endblocktrans %}</p>
     {% elif not settings.BASE_DIR %}
@@ -14,31 +13,30 @@
         <p>{% blocktrans with home_url=home_url %}settings.BASE_DIR isn't define. Please, <a href="{{home_url}}#requirements">add it</a>.{% endblocktrans %}</p>
     {% endif %}
 
-
     {% if results %}
         <p>{% blocktrans with lint_cmd=LINT_CMD %}Executing {{ lint_cmd }}.{% endblocktrans %}</p>
     {% endif %}
 
-    <div class="pure-5-5">
-        {% for result in results %}
-            {% if result.result %}
-                <div>{{ result.filename }} {% if not result.result %}=){% endif %}</div>
-                <div style="margin-left: 10px;">
-                    <small><pre>{{ result.result }}</pre></small>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
 
-    <h4>{% trans 'Files with no output' %}</h4>
-    <div class="pure-5-5">
-        {% for result in results %}
-            {% if not result.result %}
-                <div>{{ result.filename }}</div>
-            {% endif %}
-        {% endfor %}
-    </div>
+    {% for result in results %}
+        {% if result.result %}
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ result.filename }} {% if not result.result %}=){% endif %}</div>
+                <div class="panel-body"><small><pre>{{ result.result }}</pre></small></div>
+            </div>
+        {% endif %}
+    {% endfor %}
 
+    <h2>{% trans 'Files with no output' %}</h2>
+    <table class="table">
+        <tbody>
+            {% for result in results %}
+                {% if not result.result %}
+                    <tr><td>{{ result.filename }}</td></tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
 

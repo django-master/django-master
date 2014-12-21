@@ -7,7 +7,8 @@ from djangomaster.widgets import MasterWidget
 
 def autodiscover(site=mastersite):
     """
-    based on: https://github.com/django/django/blob/1.4.16/django/contrib/admin/__init__.py
+    based on: https://github.com/django/django/blob/1.4.16/django/
+              contrib/admin/__init__.py
 
     looks in all INSTALLED_APPS for the master module and load all
     widget and pages
@@ -33,9 +34,9 @@ def autodiscover(site=mastersite):
     for module in modules:
         for name, item in inspect.getmembers(module):
             if is_view(item):
-                site.add_view(module_name, item)
+                site.add_view(module.__name__, item)
             elif is_widget(item):
-                site.add_widget(module_name, item)
+                site.add_widget(module.__name__, item)
 
 
 def is_widget(cls):

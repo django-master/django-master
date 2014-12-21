@@ -64,10 +64,11 @@
 
 
     $('[data-reverse]').click(function(ev){
+        debugger;
         var el = $(ev.currentTarget),
             url = el.attr('data-reverse'),
             args = [],
-            fieldset = el.closest('fieldset');
+            fieldset = el.closest('.form-inline');
 
         fieldset.find('input').each(function(i, el){
             args.push( el.value );

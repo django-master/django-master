@@ -1,33 +1,5 @@
-import os
-from md5 import md5
-
 from django.conf import settings as djangosettings
 from django.core.exceptions import ImproperlyConfigured
-
-
-TEST_STATIC_FOLDER = os.path.join(djangosettings.STATIC_ROOT, 'djangomaster',
-                                  md5(djangosettings.SECRET_KEY).hexdigest())
-
-TEST_STATIC_FOLDER = getattr(djangosettings, 'TEST_STATIC_FOLDER',
-                             TEST_STATIC_FOLDER)
-
-
-def _create_whole_path_to_folder(path, start_from=''):
-    """Creates the whole path until the given path is satisfied"""
-    dirs = []
-    while True:
-        paths = os.path.split(path)
-        path = paths[0]
-        dirs.append(paths[1])
-        if path == start_from or path == '':
-            break
-
-    path = start_from
-    dirs.reverse()
-    for name in dirs:
-        path = os.path.join(path, name)
-        if not os.path.isdir(path):
-            os.mkdir(path)
 
 
 class Settings(object):
@@ -60,12 +32,6 @@ class Settings(object):
             raise ImproperlyConfigured('DJANGOMASTER_SIGNAL_MODULES must be '
                                        'a tuple')
         return modules
-
-    @property
-    def TEST_STATIC_FOLDER(self):
-        _create_whole_path_to_folder(start_from=djangosettings.STATIC_ROOT,
-                                     path=TEST_STATIC_FOLDER)
-        return TEST_STATIC_FOLDER
 
 
 settings = Settings()

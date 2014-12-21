@@ -33,12 +33,10 @@ class Result:
 
 
 class BaseLintView(MasterView):
-    template_name = 'djangomaster/lint.html'
-    context_object_name = 'results'
-    menu_item = 'lint'
+    template_name = 'djangomaster/pages/lint.html'
     lint_cmd = None
     lint_is_installed = False
-    title = ''
+    title = 'Lint'
     conf_name = ''
     exclude_patterns = []
 
@@ -100,11 +98,11 @@ class BaseLintView(MasterView):
 
 
 class PyLintView(BaseLintView):
-    menu_item = 'pylint'
+    name = 'pylint'
+    title = 'Py Lint'
+    label = 'Py Lint'
     lint_cmd = master_settings.PYLINT_CMD
     lint_is_installed = master_settings.PYLINT_IS_INSTALLED
-    title = ''
-    title = 'Py Lint'
     conf_name = 'DJANGOMASTER_PYLINT_INGORED_PATTERNS'
     exclude_patterns = master_settings.PYLINT_IGNORED_PATTERNS
 
@@ -113,10 +111,11 @@ class PyLintView(BaseLintView):
 
 
 class JsLintView(BaseLintView):
-    menu_item = 'jslint'
+    name = 'jslint'
+    title = 'JS Lint'
+    label = 'JS Lint'
     lint_cmd = master_settings.JSLINT_CMD
     lint_is_installed = master_settings.JSLINT_IS_INSTALLED
-    title = 'JS Lint'
     conf_name = 'DJANGOMASTER_JSLINT_INGORED_PATTERNS'
     exclude_patterns = master_settings.JSLINT_IGNORED_PATTERNS
 

@@ -3,8 +3,10 @@ from djangomaster.views import MasterView
 
 
 class MigrationsView(MasterView):
-    template_name = 'djangomaster/migrations.html'
-    menu_item = 'migrations'
+    name = 'migrations'
+    label = 'Migrations'
+    title = 'Migrations'
+    template_name = 'djangomaster/pages/migrations.html'
 
     def get_context_data(self, **kwargs):
         context = super(MigrationsView, self).get_context_data(**kwargs)

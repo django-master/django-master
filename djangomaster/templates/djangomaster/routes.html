@@ -21,7 +21,6 @@
 
     .route-subitem {
         display: none;
-        font-size: 0.8rem;
         margin-left: 20px;
     }
 
@@ -57,7 +56,6 @@
 
 
     $('.route-item').each(function(i, el){
-
         $(el).find('> .route-name').click(function(ev){
             el.classList.toggle('is-open');
         });
@@ -91,9 +89,9 @@
 
     <p>&nbsp;</p>
 
-    <div class="pure-g route-list">
-        {% for route in route_list %}
-            {% include 'djangomaster/includes/_routes_item_list.html' with route=route only %}
+    <div class="route-list">
+        {% for route in routes %}
+            {% include 'djangomaster/includes/_routes_item.html' with route=route only %}
         {% endfor %}
         </div>
     </div>

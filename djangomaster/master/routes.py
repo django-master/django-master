@@ -74,12 +74,14 @@ class Route(object):
             return ''
 
 
-class RoutesListView(MasterView):
+class RoutesView(MasterView):
+    name = 'routes'
+    label = 'Routes'
+    title = 'Routes'
     template_name = 'djangomaster/routes.html'
-    context_object_name = 'route_list'
-    menu_item = 'routes'
 
-    def get_queryset(self):
+    def get_context_data(self):
+        context = super(RoutesView, self).get_context_data()
         root_urls = __import__(settings.ROOT_URLCONF)
         ret = []
 
@@ -88,4 +90,5 @@ class RoutesListView(MasterView):
 
         ret = sorted(ret, key=lambda x: x.url)
 
-        return ret
+        context['routes'] = ret
+        return context

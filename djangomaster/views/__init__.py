@@ -35,11 +35,14 @@ class MasterView(View):
         return ''
 
     def get_context_data(self, **kwargs):
+        item_name = getattr(self, 'slug', '')
+
         context = {
             'title': self.get_title(),
             'widgets': self.get_widgets(),
             'mastermenu': self.get_menu(),
-            'mastermenu_item': getattr(self, 'slug', ''),
+            'mastermenu_module': item_name.split('-')[0],
+            'mastermenu_item': item_name,
             'footer': self.get_footer(),
             'params': kwargs,
         }

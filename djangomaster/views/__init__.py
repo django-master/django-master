@@ -1,11 +1,3 @@
-# import json
-
-# from django.core.serializers.json import DjangoJSONEncoder
-# from django.http import HttpResponse
-
-# from django.views.generic.detail import View, BaseDetailView
-# from django.views.generic.list import ListView
-
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render

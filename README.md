@@ -9,7 +9,15 @@ Master dashboard for django
 
 
 
-Interace
-========
+## Installing and Running
+
+
+* Clone this repository
+* We recomend you to create a [virtual envorinment](http://virtualenv.readthedocs.org/en/latest/virtualenv.html)
+* Install the dependencies `pip install -r requirements-dev.txt`
+* Run the dev server `python manage.py runserver 0.0.0.0:8000`
+
+
+## Interface
 
 Reference: https://github.com/IronSummitMedia/startbootstrap-sb-admin-2

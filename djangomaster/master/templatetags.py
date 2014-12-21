@@ -10,11 +10,14 @@ MODULE = type(os)
 
 
 class TemplateTagsView(MasterView):
-    template_name = 'djangomaster/templatetags.html'
-    context_object_name = 'tag_list'
-    menu_item = 'templatetags'
+    name = 'templatetags'
+    label = 'Template Tags'
+    title = 'Template Tags'
+    template_name = 'djangomaster/pages/templatetags.html'
 
-    def get_queryset(self):
+    def get_context_data(self):
+        context = super(TemplateTagsView, self).get_context_data()
+
         ret = []
         for app in settings.INSTALLED_APPS:
             try:
@@ -23,7 +26,9 @@ class TemplateTagsView(MasterView):
                 ret.append(ModuleTag(mod, name=module_name))
             except ImportError:
                 pass
-        return ret
+
+        context['tags'] = ret
+        return context
 
 
 class ModuleTag(object):

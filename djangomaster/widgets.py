@@ -3,8 +3,8 @@ from django.template.loader import render_to_string
 
 class MasterWidget(object):
     title = 'Master Widget'
+    abstract = False
     template_name = 'djangomaster/sbadmin/widget/base.html'
-    page = 'djangomaster.home'
     _error_template = 'djangomaster/sbadmin/widget/error.html'
 
     def get_title(self):

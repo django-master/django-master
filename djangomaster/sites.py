@@ -41,10 +41,12 @@ class MasterSite(object):
         return patterns(r'', *urls)
 
     def add_view(self, module_name, view):
-        self.pages[module_name].append(view)
+        if view.abstract is False:
+            self.pages[module_name].append(view)
 
     def add_widget(self, module_name, widget):
-        self.widgets[module_name].append(widget)
+        if widget.abstract is False:
+            self.widgets[module_name].append(widget)
 
     def get_menu(self):
         if not self._menu:

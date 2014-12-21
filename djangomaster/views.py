@@ -13,6 +13,7 @@ class MasterView(View):
     label = 'Django Master'
     title = 'Django Master'
     template_name = 'djangomaster/base.html'
+    abstract = False
     widgets = ()
 
     def get_title(self):

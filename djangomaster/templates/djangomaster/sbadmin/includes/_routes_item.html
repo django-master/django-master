@@ -2,9 +2,11 @@
 
 <div class="route-link-wrapper route-item list-group-item">
     <a class="route-name">{{ route.url }}{% if route.sub_urls %} +{% endif %}</a>
+    {% if route.sub_urls %}<span class="badge">{{ route.sub_urls|length }}</span>{% endif %}
 
-    <div class="route-params">
-        <span class="text-success">{{ route.view }}</span>
+
+    <div class="route-params input-group">
+        <span class="text-success" tiitle="view">{{ route.view }}</span>
         {% if route.app_name %}<span class="text-warning">[app_name="{{ route.app_name }}"]</span>{% endif %}
         {% if route.name %}
             <span class="text-warning">[name="{{ route.name }}"]</span>
@@ -20,10 +22,13 @@
         {% if route.args_count > 0 %}
             <div class="form-inline">
                 {% for index, arg in route.args %}
-                    <input type="text" class="form-control col-lg-1" placeholder="{{arg}}" />
+                    <div class="form-group">
+                        <input type="text" class="form-control col-lg-1" placeholder="{{arg}}" />
+                    </div>
                 {% endfor %}
 
-                <button class="btn btn-default" data-reverse="{{route.url}}">Reverse</button>
+                <button class="btn btn-primary" data-reverse="{{route.url}}">Reverse</button>
+
                 <div class="route-link-wrapper is-hidden">
                     Link: <a href="#" target="_blank" class="route-link"></a>
                 </div>

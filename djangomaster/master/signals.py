@@ -47,6 +47,7 @@ class SignalsView(MasterView):
 
     def get_context_data(self):
         context = super(SignalsView, self).get_context_data()
+        context['conf_name'] = 'DJANGOMASTER_SIGNAL_MODULES'
 
         ret = []
         for module_name in SIGNAL_MODULES:
@@ -58,13 +59,6 @@ class SignalsView(MasterView):
 
         context['signals'] = ret
         return context
-
-    def get_footer(self):
-        return ("You can add modules to be watched adding them "
-                "to `{conf_name}` settings. ex: <br />"
-                "<code>{conf_name} = ('amazingapp.signals', "
-                "'anotherapp.models', )</code>"
-                "").format(conf_name='DJANGOMASTER_SIGNAL_MODULES')
 
 
 class SignalInstance:

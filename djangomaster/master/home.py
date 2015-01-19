@@ -93,7 +93,7 @@ class SettingsView(MasterView):
     name = 'settings'
     label = 'Settings'
     title = 'Settings'
-    template_name = 'djangomaster/sbadmin/pages/dict.html'
+    template_name = 'djangomaster/sbadmin/pages/settings.html'
 
     def get_context_data(self):
         context = super(SettingsView, self).get_context_data()
@@ -115,9 +115,3 @@ class SettingsView(MasterView):
 
         original_value = getattr(global_settings, key)
         return original_value != value
-
-    def get_footer(self):
-        return """
-            <small>settings in <span style='color: #ba3b4c;'>this color</span>
-            was changed from <code>global_settings</code> or is a
-            new setting</small>"""

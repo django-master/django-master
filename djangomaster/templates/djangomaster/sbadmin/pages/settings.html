@@ -4,12 +4,12 @@
 
 {% block extra_css %}
 <style>
-    .dictpage {
+    .settingspage {
         font-size: 80%
     }
 
-    .dictpage-key,
-    .dictpage-key:visited {
+    .settingspage-key,
+    .settingspage-key:visited {
         overflow-x: hidden;
         text-overflow: ellipsis;
         color: inherit;
@@ -17,15 +17,16 @@
         outline: 0 !important;
     }
 
-    .dictpage-key:target {
+    .settingspage-key:target {
         color: #3b8bba;
     }
 
-    .dictpage-key.has-changed {
+    .settingspage-key.has-changed,
+    .settingspage-changedcolor {
         color: #ba3b4c;
     }
 
-    .dictpage-legend {
+    .settingspage-legend {
 
     }
 </style>
@@ -46,7 +47,7 @@
                     {% for key, value in dict.items %}
                         <tr>
                             <td>
-                                <a id="{{key}}" href="#{{key}}" title="{{key}}{% if value.changed %} - {% trans 'has changed' %}{% endif %}" class="dictpage-key {% if value.changed %}{% trans 'has-changed' %}{% endif %}">{{ key }}</a>
+                                <a id="{{key}}" href="#{{key}}" title="{{key}}{% if value.changed %} - {% trans 'has changed' %}{% endif %}" class="settingspage-key {% if value.changed %}{% trans 'has-changed' %}{% endif %}">{{ key }}</a>
                             </td>
                             <td>
                                 {{ value.value }}
@@ -56,6 +57,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="panel panel-default clearfix">
+        <div class="panel-body"><small>settings in <span class="settingspage-changedcolor">this color</span> was changed from <code>global_settings</code> or is a new setting</small></div>
     </div>
 
 {% endblock %}

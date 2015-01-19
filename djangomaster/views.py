@@ -25,9 +25,6 @@ class MasterView(View):
     def get_menu(self):
         return mastersite.get_menu()
 
-    def get_footer(self):
-        return ''
-
     def get_context_data(self, **kwargs):
         item_name = getattr(self, 'slug', '')
 
@@ -37,7 +34,6 @@ class MasterView(View):
             'mastermenu': self.get_menu(),
             'mastermenu_module': item_name.split('-')[0],
             'mastermenu_item': item_name,
-            'footer': self.get_footer(),
             'params': kwargs,
             'settings': mastersettings,
         }

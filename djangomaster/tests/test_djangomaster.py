@@ -2,9 +2,11 @@ import os
 from mock import patch
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from djangomaster import get_version, get_urls
+from djangomaster.factories import UserFactory
 
 
 class TestDjangoMaster(TestCase):
@@ -23,3 +25,11 @@ class TestDjangoMaster(TestCase):
         self.assertIsInstance(ret[0], list)
         self.assertEqual(ret[1], 'djangomaster')
         self.assertEqual(ret[2], 'djangomaster')
+
+    def test_redirect_to_djangomaster_home(self):
+        user = UserFactory(is_superuser=True)
+        self.client.login(username=user.username, password='adm1n')
+
+        response = self.client.get('/master/')
+        url = reverse('djangomaster:djangomaster-home')
+        self.assertRedirects(response, url, status_code=301)

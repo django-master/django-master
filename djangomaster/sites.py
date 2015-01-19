@@ -6,20 +6,26 @@ except ImportError:
     from ordereddict import OrderedDict
 
 from django.conf.urls import patterns, url
+from django.core.urlresolvers import reverse_lazy
 from django.template.defaultfilters import slugify
+from django.views.generic.base import RedirectView
 
 
 class MasterSite(object):
     def __init__(self):
         self.pages = defaultdict(list)
         self.widgets = defaultdict(list)
-        self.urls = ()
         self._menu = OrderedDict()
+
+    @property
+    def homeview(self):
+        homeurl = reverse_lazy('djangomaster:djangomaster-home')
+        return RedirectView.as_view(url=homeurl)
 
     @property
     def urlpatterns(self):
         self._menu = OrderedDict()
-        urls = []
+        urls = [url(r'^$', self.homeview, name='djangomaster')]
 
         for module, pages in self.pages.items():
             module = module.replace('.master', '')

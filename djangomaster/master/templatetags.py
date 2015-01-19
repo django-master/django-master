@@ -11,8 +11,8 @@ MODULE = type(os)
 
 class TemplateTagsView(MasterView):
     name = 'templatetags'
-    label = 'Template Tags'
-    title = 'Template Tags'
+    label = 'Template Tags and Filters'
+    title = 'Template Tags and Filters'
     template_name = 'djangomaster/sbadmin/pages/templatetags.html'
 
     def get_context_data(self):

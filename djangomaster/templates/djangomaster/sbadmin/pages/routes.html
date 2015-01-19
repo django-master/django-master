@@ -57,6 +57,7 @@
         url = url.trim();
         url = url.replace(/\s\^/g, '');
         url = url.replace(/(^\^)|(\$$)/g, '');
+        url = url.replace(/\\/g, '');
 
         return '/' + url;
     }

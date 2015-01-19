@@ -19,11 +19,13 @@
         cursor: pointer;
     }
 
+    .route-params,
     .route-subitem {
         display: none;
         margin-left: 20px;
     }
 
+    .route-item.is-open > .route-params,
     .route-item.is-open > .route-subitem {
         display: block;
     }
@@ -54,7 +56,6 @@
         return '/' + url;
     }
 
-
     $('.route-item').each(function(i, el){
         $(el).find('> .route-name').click(function(ev){
             el.classList.toggle('is-open');
@@ -62,9 +63,7 @@
 
     });
 
-
     $('[data-reverse]').click(function(ev){
-        debugger;
         var el = $(ev.currentTarget),
             url = el.attr('data-reverse'),
             args = [],
@@ -90,12 +89,12 @@
 
     <p>&nbsp;</p>
 
-    <div class="route-list">
+    <ul class="list-group">
         {% for route in routes %}
-            {% include 'djangomaster/includes/_routes_item.html' with route=route only %}
+            {% include 'djangomaster/sbadmin/includes/_routes_item.html' with route=route only %}
         {% endfor %}
         </div>
-    </div>
+    </ul>
 
 {% endblock %}
 

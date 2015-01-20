@@ -76,4 +76,8 @@ class FieldInstance(object):
         clsname = str(type(self.field))
         return clsname[8:-2]
 
+    @property
+    def help_text(self):
+        return self.field.help_text
+
 

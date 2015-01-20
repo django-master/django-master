@@ -1,0 +1,36 @@
+{% extends 'djangomaster/base.html' %}
+
+{% block page_title %}Models{% endblock %}
+
+{% block content %}
+
+    {% for module in modules %}
+        {% for model in module.models %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ module.name }}.{{ model.name }} {% if model.is_abstract %}<span class="badge">abstract</span>{% endif %} <span class="badge" title="registers">{{model.count}}</span></h3>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="200">Field name</th>
+                        <th>Field Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field in model.fields %}
+                        <tr>
+                            <td>{{ field.name }}</td>
+                            <td>{{ field.type }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+

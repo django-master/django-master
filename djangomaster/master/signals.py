@@ -1,6 +1,5 @@
-from django.dispatch import Signal
-
 from djangomaster.conf import settings
+from djangomaster.utils import get_module, is_signal
 from djangomaster.views import MasterView
 
 SIGNAL_MODULES = (
@@ -11,32 +10,6 @@ SIGNAL_MODULES = (
     'django.db.backends.signals',
     'django.contrib.comments.signals',
 ) + settings.SIGNAL_MODULES
-
-
-def is_signal(instance):
-    """Given the instance, checks if it is or any
-    base class is the Signal class """
-    cls = getattr(instance, '__class__', instance)
-
-    if cls in (type, object):
-        return False
-
-    if cls == Signal:
-        return True
-
-    for base in cls.__bases__:
-        if is_signal(base):
-            return True
-
-    return False
-
-
-def get_module(module_name):
-    paths = module_name.split('.')
-    module = __import__(module_name)
-    for path in paths[1:]:
-        module = getattr(module, path)
-    return module
 
 
 class SignalsView(MasterView):
